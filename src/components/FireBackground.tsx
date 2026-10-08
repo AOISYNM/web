@@ -1,11 +1,5 @@
 import { useEffect, useRef } from "react";
 
-/**
- * BLACKFIRE FORGE 🔥 — Authentic Viking forge fire with Conqueror's Haki intensity.
- * Bellows-pumped white-hot core, coal bed, trailing forge sparks, rising ash,
- * Haki power surges. No dependencies besides React.
- * (Next.js: add "use client" at the top.)
- */
 
 // ─── BLACKFIRE PALETTE ───
 const BLOOD: RGB = [59, 5, 5]; // #3B0505
@@ -139,6 +133,8 @@ export default function FireBackground() {
     const clusterX = (i: number) =>
       clusters[i].base +
       Math.sin(time * 0.25 + clusters[i].seed) * 65 * bellows(time);
+
+      
 
     // ─── SPAWN ───
 
@@ -514,7 +510,7 @@ export default function FireBackground() {
 
       ctx.globalCompositeOperation = "source-over";
     };
-
+      
     // ── ANIMATION LOOP ──
     const frame = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.05);

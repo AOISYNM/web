@@ -3,7 +3,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import backgroundImage from "../assets/background.png";
 import testing from "../assets/testing.png";
 interface WelcomeScreenProps {
   isExiting: boolean;

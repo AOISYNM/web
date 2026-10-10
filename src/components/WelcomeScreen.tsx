@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import backgroundImage from "../assets/background.png";
+import testing from "../assets/testing.png";
 interface WelcomeScreenProps {
   isExiting: boolean;
   logo?: ReactNode;
@@ -20,20 +21,6 @@ const C = {
   emberRed: "#D5220F",
   inferno: "#FF3B16",
 };
-
-const CLOUDS = [
-  { x: 5, y: 5, w: 55, h: 45, blur: 90, color: "#0a0808", op: 0.85, dur: 28, dx: 12, dy: 8 },
-  { x: 35, y: -2, w: 65, h: 50, blur: 100, color: "#0c0909", op: 0.9, dur: 35, dx: -10, dy: 12 },
-  { x: 15, y: 25, w: 55, h: 40, blur: 80, color: "#0a0707", op: 0.75, dur: 24, dx: 8, dy: -10 },
-  { x: 55, y: 20, w: 50, h: 35, blur: 85, color: "#0b0808", op: 0.8, dur: 30, dx: -15, dy: 6 },
-  { x: 25, y: 15, w: 30, h: 22, blur: 70, color: "#1a0505", op: 0.55, dur: 22, dx: 6, dy: 5 },
-  { x: 60, y: 10, w: 28, h: 20, blur: 60, color: "#180404", op: 0.45, dur: 20, dx: -8, dy: 7 },
-  { x: 40, y: 35, w: 32, h: 24, blur: 65, color: "#1a0606", op: 0.5, dur: 26, dx: 10, dy: -8 },
-  { x: 10, y: 45, w: 22, h: 16, blur: 45, color: "#0a0808", op: 0.4, dur: 18, dx: 5, dy: 3 },
-  { x: 70, y: 40, w: 25, h: 18, blur: 50, color: "#0b0707", op: 0.35, dur: 21, dx: -4, dy: 6 },
-  { x: 45, y: 5, w: 20, h: 14, blur: 40, color: "#150505", op: 0.3, dur: 16, dx: 7, dy: -5 },
-  { x: -5, y: -5, w: 110, h: 110, blur: 120, color: "#080606", op: 0.25, dur: 40, dx: 5, dy: 3 },
-];
 
 const FILAMENTS = [
   { d: "M 60,230 Q 200,155 400,255 T 580,185", delay: 1.1, dur: 1.1 },
@@ -53,6 +40,13 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
     const h = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mq.addEventListener("change", h);
     return () => mq.removeEventListener("change", h);
+  }, []);
+
+  const [vh, setVh] = useState(() => typeof window !== "undefined" ? window.innerHeight : 800);
+  useEffect(() => {
+    const handleResize = () => setVh(window.innerHeight);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const embers = useMemo(
@@ -84,10 +78,10 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
     return () => t.forEach(clearTimeout);
   }, [reducedMotion]);
 
-  const exitY = isExiting ? -(window.innerHeight + 100) : 0;
+  const exitY = isExiting ? -(vh + 100) : 0;
 
   const EnergyLine = ({ show, reverse = false }: { show: boolean; reverse?: boolean }) => (
-    <div className="relative w-full max-w-[260px] md:max-w-[340px] lg:max-w-[400px]">
+    <div className="relative w-full max-w-[180px] sm:max-w-[260px] md:max-w-[340px] lg:max-w-[400px]">
       <motion.div
         className="h-[1px] w-full"
         style={{ backgroundColor: C.crimson, transformOrigin: "center" }}
@@ -116,67 +110,40 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
 
   return (
     <motion.section
-  className="fixed inset-0 z-50 overflow-hidden"
-  animate={{ y: exitY, opacity: isExiting ? 0 : 1, scale: isExiting ? 0.97 : 1 }}
-  transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
->
-{/* LAYER 0: Background image */}
-<div
-  className="absolute inset-0 pointer-events-none"
-  style={{
-    zIndex: 0,
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat",
-  }}
+      className="fixed inset-0 z-50 overflow-hidden"
+      animate={{ y: exitY, opacity: isExiting ? 0 : 1, scale: isExiting ? 0.97 : 1 }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* LAYER 0: Background image */}
+<img
+  src={testing}
+  alt=""
+  className="absolute inset-0 w-full h-full object-cover pointer-events-none
+             object-[center_40%] sm:object-[center_35%] md:object-[center_30%] lg:object-[center_25%]"
+  style={{ zIndex: 0 }}
   aria-hidden="true"
 />
 
-{/* LAYER 1: Subtle dark overlay */}
-<div
-  className="absolute inset-0 pointer-events-none"
-  style={{
-    zIndex: 1,
-    background: "rgba(5, 5, 5, 0.15)",
-  }}
-  aria-hidden="true"
-/>
+      {/* LAYER 1: Subtle dark overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity :0,
+          zIndex: 1,
+          background: "rgba(5, 5, 5, 0.03)"
+        }}
+        aria-hidden="true"
+      />
 
-{/* LAYER 2: Fire background */}
+      {/* LAYER 2: Fire background */}
 {fireBackground && (
   <div
     className="absolute inset-0 pointer-events-none overflow-hidden"
-    style={{ zIndex: 2 }}
+    style={{ zIndex: 2, mixBlendMode: "screen" , opacity: 0.85}}
   >
     {fireBackground}
   </div>
 )}
-      {/* ═══ LAYER 2: Storm Clouds ═══ */}
-      <div className="absolute inset-0 z-[2] overflow-hidden">
-        {CLOUDS.map((cl, i) => (
-          <motion.div
-            key={`c${i}`}
-            className="absolute"
-            style={{
-              left: `${cl.x}%`,
-              top: `${cl.y}%`,
-              width: `${cl.w}%`,
-              height: `${cl.h}%`,
-              background: `radial-gradient(ellipse at center, ${cl.color}, transparent 70%)`,
-              filter: `blur(${cl.blur}px)`,
-              opacity: cl.op,
-            }}
-            animate={{ x: [0, cl.dx, 0], y: [0, cl.dy, 0] }}
-            transition={{
-              duration: cl.dur,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
 
       {/* ═══ LAYER 3: Embers ═══ */}
       <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
@@ -207,13 +174,13 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
         ))}
       </div>
 
-      {/* ═══ LAYER 4: Vignette ═══ */}
-      <div
-        className="absolute inset-0 z-[4] pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse 65% 55% at 50% 38%, transparent 25%, ${C.bg}CC 62%, ${C.bg} 100%)`,
-        }}
-      />
+     {/* ═══ LAYER 4: Vignette ═══ */}
+<div
+  className="absolute inset-0 z-[4] pointer-events-none"
+  style={{
+    background: `radial-gradient(ellipse 80% 70% at 50% 40%, transparent 50%, ${C.bg}44 75%, ${C.bg}66 100%)`,
+  }}
+/>
 
       {/* ═══ LAYER 5: Scan grain ═══ */}
       <div
@@ -248,15 +215,15 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
       </svg>
 
       {/* ═══ CONTENT ═══ */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-start pt-[12vh] px-4">
+      <div className="relative z-10 h-full flex flex-col items-center justify-start pt-[7vh] sm:pt-[9vh] md:pt-[12vh] px-4 sm:px-6">
 
         {/* Upper energy line */}
-        <div className="mb-4 md:mb-5">
+        <div className="mb-3 sm:mb-4 md:mb-5">
           <EnergyLine show={phase >= 1} />
         </div>
 
         {/* WELCOME */}
-        <div className="flex items-baseline justify-center mb-2 md:mb-2.5" style={{ perspective: 600 }}>
+        <div className="flex items-baseline justify-center mb-1.5 sm:mb-2 md:mb-2.5" style={{ perspective: 600 }}>
           {"WELCOME".split("").map((ch, i) => (
             <motion.span
               key={`w${i}`}
@@ -264,7 +231,7 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
               style={{
                 fontFamily: "'Cinzel Decorative','Cinzel',serif",
                 fontWeight: 900,
-                fontSize: "clamp(2.75rem,8vw,7.5rem)",
+                fontSize: "clamp(2rem,8vw,7.5rem)",
                 letterSpacing: "0.04em",
                 color: C.inferno,
                 textShadow: `0 0 6px ${C.emberRed}AA,0 0 20px ${C.crimson}55,0 0 40px ${C.bloodRed}22`,
@@ -283,8 +250,8 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
           className="text-center mb-1"
           style={{
             fontFamily: "'Cinzel',serif",
-            fontSize: "clamp(0.5rem,1.4vw,0.9rem)",
-            letterSpacing: "clamp(0.22em,0.55vw,0.5em)",
+            fontSize: "clamp(0.45rem,1.4vw,0.9rem)",
+            letterSpacing: "clamp(0.18em,0.55vw,0.5em)",
             color: C.emberRed,
           }}
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
@@ -300,14 +267,14 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
         </div>
 
         {/* ═══ LOGO ═══ */}
-        <div className="relative flex items-center justify-center -mt-20">
+        <div className="relative flex items-center justify-center -mt-8 sm:-mt-12 md:-mt-16 lg:-mt-20">
 
           {/* Broad atmospheric glow — reveal burst */}
           <motion.div
             className="absolute rounded-full blur-3xl"
             style={{
-              width: "clamp(350px,70vw,900px)",
-              height: "clamp(350px,70vw,900px)",
+              width: "clamp(260px,70vw,900px)",
+              height: "clamp(260px,70vw,900px)",
               background: `radial-gradient(circle,${C.crimson}55,${C.bloodRed}28 35%,transparent 60%)`,
             }}
             initial={{ opacity: 0, scale: 0.25 }}
@@ -319,8 +286,8 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
           <motion.div
             className="absolute rounded-full blur-3xl"
             style={{
-              width: "clamp(300px,65vw,850px)",
-              height: "clamp(300px,65vw,850px)",
+              width: "clamp(220px,65vw,850px)",
+              height: "clamp(220px,65vw,850px)",
               background: `radial-gradient(circle,${C.emberRed}38,${C.conquerorRed}18 40%,transparent 60%)`,
             }}
             initial={{ opacity: 0 }}
@@ -332,8 +299,8 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
           <motion.div
             className="absolute rounded-full blur-xl"
             style={{
-              width: "clamp(220px,42vw,550px)",
-              height: "clamp(220px,42vw,550px)",
+              width: "clamp(160px,42vw,550px)",
+              height: "clamp(160px,42vw,550px)",
               background: `radial-gradient(circle,transparent 45%,${C.inferno}20 65%,transparent 80%)`,
             }}
             initial={{ opacity: 0 }}
@@ -345,8 +312,8 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
           <motion.div
             className="relative flex items-center justify-center"
             style={{
-              width: "clamp(200px,42vw,520px)",
-              height: "clamp(200px,42vw,520px)",
+              width: "clamp(150px,42vw,520px)",
+              height: "clamp(150px,42vw,520px)",
               filter: `
                 drop-shadow(0 0 14px ${C.emberRed}77)
                 drop-shadow(0 0 35px ${C.crimson}44)
@@ -370,7 +337,7 @@ export default function WelcomeScreen({ isExiting, logo, fireBackground }: Welco
         {/* Scroll chevron */}
         {phase >= 5 && (
           <motion.div
-            className="absolute bottom-7 md:bottom-9 left-1/2 -translate-x-1/2"
+            className="absolute bottom-5 sm:bottom-7 md:bottom-9 left-1/2 -translate-x-1/2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}

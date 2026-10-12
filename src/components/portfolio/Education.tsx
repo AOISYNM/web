@@ -234,7 +234,7 @@ export default function Education() {
                             </span>
                           </div>
 
-                          {/* Degree: Cinzel Decorative, same look as the previous version */}
+                          {/*  */}
                           <div className="flex flex-col gap-2">
                             <h3
                               style={{ fontFamily: FONT_DISPLAY }}

@@ -6,6 +6,7 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import About from "@/components/portfolio/About";
 import Skills from "@/components/portfolio/Skills";
 import Education from "@/components/portfolio/Education";
+import Contact from "@/components/portfolio/Contact";
 
 function Index() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -89,6 +90,7 @@ function Index() {
       <About/>
       <Skills/>
       <Education/>
+      <Contact/>
 
       {/* ← added: placeholder sections so nav links work */}
       <section id="about" className="min-h-screen" />

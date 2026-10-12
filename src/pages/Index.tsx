@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import FireBackground from "@/components/FireBackground";
 import WelcomeScreen from "@/components/WelcomeScreen";
+import Navbar from "@/components/portfolio/Navbar"; // ← added
+import HeroSection from "@/components/portfolio/HeroSection";
+import About from "@/components/portfolio/About";
+import Skills from "@/components/portfolio/Skills";
+import Education from "@/components/portfolio/Education";
 
 function Index() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -78,9 +83,19 @@ function Index() {
         />
       )}
 
-      <div className="relative z-10 flex min-h-screen items-center justify-center">
-        <h1 className="text-6xl font-bold text-white">PUNJAN</h1>
-      </div>
+      {/* ← added: navbar rolls in after welcome screen exits */}
+      <Navbar visible={!showWelcome} />
+      <HeroSection />
+      <About/>
+      <Skills/>
+      <Education/>
+
+      {/* ← added: placeholder sections so nav links work */}
+      <section id="about" className="min-h-screen" />
+      <section id="skills" className="min-h-screen" />
+      <section id="projects" className="min-h-screen" />
+      <section id="education" className="min-h-screen" />
+      <section id="contact" className="min-h-screen" />
     </main>
   );
 }

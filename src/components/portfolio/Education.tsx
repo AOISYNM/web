@@ -10,7 +10,7 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /* ------------------------------------------------------------------ */
 /*  Data: single source of truth, newest first                         */
-/*  Dates are shown as given: the B.Sc. in AD, the +2 and SEE in BS.   */
+/*  updates   */
 /* ------------------------------------------------------------------ */
 const education = [
   {

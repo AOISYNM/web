@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import FireBackground from "@/components/FireBackground";
 import WelcomeScreen from "@/components/WelcomeScreen";
-import Navbar from "@/components/portfolio/Navbar"; // ← added
+import Navbar from "@/components/portfolio/Navbar";
 import HeroSection from "@/components/portfolio/HeroSection";
 import About from "@/components/portfolio/About";
 import Skills from "@/components/portfolio/Skills";
 import Education from "@/components/portfolio/Education";
 import Contact from "@/components/portfolio/Contact";
+import Projects from "@/components/portfolio/Projects";
 
 function Index() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -84,20 +85,17 @@ function Index() {
         />
       )}
 
-      {/* ← added: navbar rolls in after welcome screen exits */}
+      {/* Navbar rolls in after the welcome screen exits. It finds each section
+          by id (about, skills, projects, education, contact), so the root
+          element of each component below must carry that id. */}
       <Navbar visible={!showWelcome} />
-      <HeroSection />
-      <About/>
-      <Skills/>
-      <Education/>
-      <Contact/>
 
-      {/* ← added: placeholder sections so nav links work */}
-      <section id="about" className="min-h-screen" />
-      <section id="skills" className="min-h-screen" />
-      <section id="projects" className="min-h-screen" />
-      <section id="education" className="min-h-screen" />
-      <section id="contact" className="min-h-screen" />
+      <HeroSection />
+      <About />
+      <Skills />
+      <Projects />
+      <Education />
+      <Contact />
     </main>
   );
 }

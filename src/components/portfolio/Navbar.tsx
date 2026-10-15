@@ -438,10 +438,10 @@ export default function Navbar({ visible = true }: NavbarProps) {
                         onClick={() => goToSection(link.href)}
                         style={bodyFont}
                         aria-current={isActive ? "true" : undefined}
-                        className={`group relative [&>span:first-child]:hidden w-full rounded-none py-4 text-base uppercase tracking-[0.25em] transition-colors duration-200 ease-out hover:bg-transparent focus:bg-transparent active:bg-transparent hover:text-[#FF3B16] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B16] ${
+                        className={`group relative w-full rounded-none py-4 text-base uppercase tracking-[0.25em] transition-colors duration-200 ease-out hover:bg-transparent focus:bg-transparent active:bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B16] ${
                           isActive
-                            ? "bg-transparent text-[#FF3B16]"
-                            : "bg-transparent text-[#D8D4CF]"
+                            ? "!bg-transparent !text-[#FF3B16]"
+                            : "!bg-transparent !text-white hover:!text-[#FF3B16]"
                         }`}
                       >
                         {link.label}

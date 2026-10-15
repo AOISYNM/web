@@ -8,6 +8,7 @@ import Skills from "@/components/portfolio/Skills";
 import Education from "@/components/portfolio/Education";
 import Contact from "@/components/portfolio/Contact";
 import Projects from "@/components/portfolio/Projects";
+import Footer from "@/components/portfolio/Footer";
 
 function Index() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -96,6 +97,7 @@ function Index() {
       <Projects />
       <Education />
       <Contact />
+      <Footer />
     </main>
   );
 }

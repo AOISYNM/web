@@ -49,8 +49,8 @@ const categories: { title: string; skills: Skill[] }[] = [
     title: "AI & Machine Learning",
     skills: [
       { name: "NumPy", level: 70 },
-      { name: "Pandas", level: 70 },
-      { name: "Scikit-learn", level: 60 },
+      { name: "Pandas", level: 75 },
+      { name: "Scikit-learn", level: 70 },
       { name: "TensorFlow", level: 50 },
     ],
   },
@@ -66,9 +66,9 @@ const categories: { title: string; skills: Skill[] }[] = [
   {
     title: "Tools",
     skills: [
-      { name: "VS Code", level: 80 },
-      { name: "Jupyter Notebook", level: 75 },
-      { name: "Git & GitHub", level: 65 },
+      { name: "VS Code", level: 85 },
+      { name: "Jupyter Notebook", level: 80 },
+      { name: "Git & GitHub", level: 70 },
     ],
   },
 ];

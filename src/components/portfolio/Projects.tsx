@@ -2,6 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Github } from "lucide-react";
+import heartImg from "@/assets/HeartSTR.png";
+import houseImg from "@/assets/HPP.png";
+import unitedImg from "@/assets/united.png";
+import naturalImg from "@/assets/NLP.png";
+import rnnImg from "@/assets/RNN.png";
 
 /* ══════════════════════════════════════════════════════════════════════════
    1. DATA: the only part you need to edit
@@ -41,79 +46,89 @@ type Project = {
 const GITHUB_PROFILE = "https://github.com/AOISYNM";
 
 const PROJECTS: Project[] = [
-  /* ── Starred ─────────────────────────────────────────────────────────── */
-  {
-    id: "project-one",
-    starred: true,
-    title: "Project Title One",
-    category: "AI / Machine Learning",
-    tagline: "A one-line summary of what it does.",
-    description:
-      "Replace this with two or three sentences on what the project does, the problem it solves and how you built it.",
-    stack: ["Python", "TensorFlow", "NumPy"],
-    github: GITHUB_PROFILE,
-    live: "https://google.com",
-    visual: "neural",
-  },
-  {
-    id: "project-two",
-    starred: true,
-    title: "Project Title Two",
-    category: "Web Application",
-    tagline: "A one-line summary of what it does.",
-    description:
-      "Replace this with two or three sentences on what the project does, the problem it solves and how you built it.",
-    stack: ["React", "Django", "REST APIs"],
-    github: GITHUB_PROFILE,
-    visual: "terminal",
-  },
-  {
-    id: "project-three",
-    starred: true,
-    title: "Project Title Three",
-    category: "Data Science",
-    tagline: "A one-line summary of what it does.",
-    description:
-      "Replace this with two or three sentences on what the project does, the problem it solves and how you built it.",
-    stack: ["Pandas", "Scikit-learn", "Matplotlib"],
-    github: GITHUB_PROFILE,
-    visual: "chart",
-  },
+/* ── Starred ─────────────────────────────────────────────────────────── */
+{
+  id: "project-one",
+  starred: true,
+  title: "Heart Stroke Risk Predictor",
+  category: "Machine Learning",
+  tagline: "Turning clinical health data into machine learning-powered risk estimates.",
+  description:
+    "An interactive machine learning application that estimates heart disease risk using clinical parameters such as age, cholesterol, and blood pressure. Built with Logistic Regression and Streamlit to deliver real-time predictions.",
+  stack: ["Scikit-learn", "Streamlit", "Pandas", "NumPy"],
+  github: `${GITHUB_PROFILE}/Heart_Disease_Predictor`,
+  live: "https://punjan-heartdisease.streamlit.app/",
+  image: heartImg,
+  visual: "neural",
+},
+{
+  id: "project-two",
+  starred: true,
+  title: "House Price Prediction",
+  category: "Data Science & Machine Learning",
+  tagline: "Uncovering housing market patterns through data analysis and predictive modeling.",
+  description:
+    "A data science project that analyzes housing data to identify patterns and factors affecting property prices. Uses data visualization and machine learning techniques to explore and predict house values.",
+  stack: [ "Pandas", "Matplotlib", "Seaborn", "Scikit-learn"],
+  github: "https://github.com/AOISYNM/DA_Practice/tree/main/House_Pred",
+  live: "https://aoisynm-house-price-predction.streamlit.app/",
+  image: houseImg,
+  visual: "terminal",
+},
+{
+  id: "project-three",
+  starred: true,
+  title: "United Travels and Tours",
+  category: "Web Development",
+  tagline: "A real-world digital experience built for United Travels and Tours.",
+  description:
+    "Developed a travel website for United Travels and Tours to showcase destinations and travel services through a professional, user-friendly experience. Built with Next.js, TypeScript, and Tailwind CSS to deliver a responsive interface for real-world business needs.",
+  stack: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
+  github: "https://github.com/Ghost9841/united-travel-tour",
+  live: "https://www.unitedtravels.co.uk/",
+  image: unitedImg,
+  visual: "chart",
+},
 
-  /* ── Other projects ──────────────────────────────────────────────────── */
-  {
-    id: "project-four",
-    starred: false,
-    title: "Project Title Four",
-    category: "Category",
-    tagline: "",
-    description: "Replace this with a short description of the project.",
-    stack: ["Python", "Pandas"],
-    github: GITHUB_PROFILE,
-    live : "https://google.com",
-    visual: "chart",
-  },
+/* ── Other projects ──────────────────────────────────────────────────── */
+{
+  id: "project-four",
+  starred: false,
+  title: "Natural Language Processing",
+  category: "Data Science & NLP",
+  tagline: "Exploring how machines process, interpret, and learn from human language.",
+  description:
+    "An NLP project exploring how text data can be processed and analyzed to extract meaningful insights. Includes text preprocessing and emotion classification using Python-based NLP techniques.",
+  stack: [ "Pandas", "NumPy", "NLTK", "Scikit-learn"],
+  github: "https://github.com/AOISYNM/DA_Practice/tree/main/NLP",
+  live: "https://aoisynm-emotion-classifier.streamlit.app/",
+  image: naturalImg,
+  visual: "chart",
+},
+
   {
     id: "project-five",
     starred: false,
-    title: "Project Title Five",
-    category: "Category",
-    tagline: "",
-    description: "Replace this with a short description of the project.",
-    stack: ["JavaScript", "HTML", "CSS"],
-    github: GITHUB_PROFILE,
-    visual: "terminal",
+    title: "Recurrent Neural Networks",
+    category: "Deep Learning",
+    tagline: "Learning sequential patterns with recurrent neural networks.",
+    description: "A hands-on deep learning project exploring how Recurrent Neural Networks process sequential data and learn patterns over time. Focuses on understanding sequence modeling and the fundamentals of recurrent architectures using Python.",
+    stack: ["NumPy", "Pandas", "TensorFlow", "Keras"],
+    github: 'https://github.com/AOISYNM/DA_Practice/tree/main/RNN',
+    live: "https://aoisynm-next-text-predictor.streamlit.app/",
+    image: rnnImg,
+    visual: "neural", 
   },
   {
     id: "project-six",
     starred: false,
-    title: "Project Title Six",
-    category: "Category",
-    tagline: "",
-    description: "Replace this with a short description of the project.",
-    stack: ["Python", "Scikit-learn"],
-    github: GITHUB_PROFILE,
-    visual: "neural",
+    title: "Student Grading System",
+    category: "Analysis & Visualization",
+    tagline: "Simplifying student assessment through automated grading.",
+    description: "A student grading system designed to organize student marks and simplify grade calculation. The project focuses on making academic assessment more efficient and presenting student results in a structured format.",
+    stack: ["C", "Data Structures","Pandas" ,"NumPy"],
+    github: "https://github.com/AOISYNM/School-Grading-System",
+    visual: "chart",
   },
 ];
 
@@ -859,7 +874,7 @@ export default function Projects() {
             style={displayFont}
             className="pb-1 text-[length:clamp(2rem,9vw,5.5rem)] font-black leading-[1.08] tracking-[0.02em]"
           >
-            <span className="block text-[#E8E5E0]">Starred</span>{" "}
+            <span className="block text-[#E8E5E0]">My</span>{" "}
             {/* Padding + matching negative margin keeps the decorative swash
                 from being clipped by the gradient's paint area */}
             <span className="-mx-[0.2em] -mt-[0.1em] block bg-gradient-to-b from-[#FF3B16] to-[#D5220F] bg-clip-text px-[0.2em] pb-[0.15em] pt-[0.1em] text-transparent">
@@ -872,9 +887,8 @@ export default function Projects() {
             style={bodyFont}
             className="mt-6 text-base leading-[1.9] tracking-[0.02em] text-[#9A9692] sm:text-lg"
           >
-            A closer look at my starred projects. Each one links to its GitHub
-            repository, where the README covers the full details, and to a live
-            version when one is deployed.
+            A closer look at my projects. Each one links to its
+  GitHub repository for detailed explanation and a live deployed link if availabe. The starred projects are highlighted for their significance, while the others showcase the breadth of my work.
           </motion.p>
         </motion.div>
 

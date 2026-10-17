@@ -904,7 +904,7 @@ export default function Projects() {
           </motion.div>
         )}
 
-        {/* ---------- Other projects ---------- */}
+        {/* --------- Other projects --------- */}
         {others.length > 0 && (
           <div className="mt-20 md:mt-28">
             <motion.div

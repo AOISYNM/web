@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import FireBackground from "@/components/FireBackground";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import WelcomeScreen from "@/components/WelcomeScreen";
 import Navbar from "@/components/portfolio/Navbar";
 import HeroSection from "@/components/portfolio/HeroSection";
@@ -10,63 +10,18 @@ import Contact from "@/components/portfolio/Contact";
 import Projects from "@/components/portfolio/Projects";
 import Footer from "@/components/portfolio/Footer";
 
+const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 function Index() {
   const [showWelcome, setShowWelcome] = useState(true);
-  const [isExiting, setIsExiting] = useState(false);
-  const exitTriggered = useRef(false);
+  // Flips when the welcome screen starts lifting away, so the page
+  // rises into view as the screen leaves instead of after it.
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
-    if (showWelcome) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = showWelcome ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
-    };
-  }, [showWelcome]);
-
-  useEffect(() => {
-    if (!showWelcome) return;
-
-    const triggerExit = () => {
-      if (exitTriggered.current) return;
-      exitTriggered.current = true;
-      setIsExiting(true);
-      setTimeout(() => {
-        setShowWelcome(false);
-      }, 1300);
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY > 25) triggerExit();
-    };
-
-    let touchStartY = 0;
-    const onTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-    };
-    const onTouchEnd = (e: TouchEvent) => {
-      if (touchStartY - e.changedTouches[0].clientY > 60) triggerExit();
-    };
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || e.key === " ") {
-        e.preventDefault();
-        triggerExit();
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: true });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd);
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-      window.removeEventListener("keydown", onKeyDown);
     };
   }, [showWelcome]);
 
@@ -74,8 +29,6 @@ function Index() {
     <main className="min-h-screen bg-[#050505]">
       {showWelcome && (
         <WelcomeScreen
-          isExiting={isExiting}
-          fireBackground={<FireBackground />}
           logo={
             <img
               src="/logo-nobg.png"
@@ -83,21 +36,38 @@ function Index() {
               className="w-full h-full object-contain"
             />
           }
+          onExitStart={() => setRevealed(true)}
+          onComplete={() => setShowWelcome(false)}
         />
       )}
 
-      {/* Navbar rolls in after the welcome screen exits. It finds each section
+      {/* Navbar rolls in once the welcome screen is gone. It finds each section
           by id (about, skills, projects, education, contact), so the root
           element of each component below must carry that id. */}
       <Navbar visible={!showWelcome} />
 
-      <HeroSection />
-      <About />
-      <Skills />
-      <Projects />
-      <Education />
-      <Contact />
-      <Footer />
+      {/* Everything stays mounted under the welcome screen so images and fonts
+          load while it plays. Hero rises in first, the rest fades in behind it. */}
+      <motion.div
+        initial={{ opacity: 0, y: 48, scale: 0.98 }}
+        animate={revealed ? { opacity: 1, y: 0, scale: 1 } : {}}
+        transition={{ delay: 0.45, duration: 1, ease: EASE }}
+      >
+        <HeroSection />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={revealed ? { opacity: 1 } : {}}
+        transition={{ delay: 0.8, duration: 0.8 }}
+      >
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Contact />
+        <Footer />
+      </motion.div>
     </main>
   );
 }

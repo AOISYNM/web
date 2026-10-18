@@ -610,21 +610,6 @@ function Showcase({ projects }: { projects: Project[] }) {
             {/* ── Visual ── */}
             <div className="relative aspect-[16/10] w-full border-b border-[#E8E5E0]/10 lg:aspect-auto lg:h-full lg:border-b-0 lg:border-r">
               <ProjectVisual project={project} animate />
-
-              {/* Caption */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#050505]/80 to-transparent"
-              />
-              <div className="pointer-events-none absolute inset-x-6 bottom-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-[#E8E5E0]/70">
-                <span>Fig. {pad(index + 1)}</span>
-                {project.live && (
-                  <span className="flex items-center gap-1.5 text-[#FF3B16]">
-                    <span className="h-1.5 w-1.5 bg-[#FF3B16]" />
-                    Live
-                  </span>
-                )}
-              </div>
             </div>
 
             {/* ── Content ── */}

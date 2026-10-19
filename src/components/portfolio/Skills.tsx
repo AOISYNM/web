@@ -51,7 +51,7 @@ const categories: { title: string; skills: Skill[] }[] = [
       { name: "NumPy", level: 70 },
       { name: "Pandas", level: 75 },
       { name: "Scikit-learn", level: 70 },
-      { name: "TensorFlow", level: 50 },
+      { name: "TensorFlow", level: 55 },
     ],
   },
   {

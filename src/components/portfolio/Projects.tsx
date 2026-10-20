@@ -54,7 +54,7 @@ const PROJECTS: Project[] = [
   category: "Machine Learning",
   tagline: "Turning clinical health data into machine learning-powered risk estimates.",
   description:
-    "An interactive machine learning application that estimates heart disease risk using clinical parameters such as age, cholesterol, and blood pressure. Built with Logistic Regression and Streamlit to deliver real-time predictions.",
+    "An interactive machine learning application that estimates heart disease risk using clinical parameters such as age, cholesterol, and other factors. Built with Logistic Regression and Streamlit to deliver real-time predictions.",
   stack: ["Scikit-learn", "Streamlit", "Pandas", "NumPy"],
   github: `${GITHUB_PROFILE}/Heart_Disease_Predictor`,
   live: "https://punjan-heartdisease.streamlit.app/",
@@ -82,7 +82,7 @@ const PROJECTS: Project[] = [
   category: "Web Development",
   tagline: "A real-world digital experience built for United Travels and Tours.",
   description:
-    "Developed a travel website for United Travels and Tours to showcase destinations and travel services through a professional, user-friendly experience. Built with Next.js, TypeScript, and Tailwind CSS to deliver a responsive interface for real-world business needs.",
+    "Worked on  a travel website for United Travels and Tours to showcase destinations and travel services through a professional, user-friendly experience. Built with Next.js, TypeScript, and Tailwind CSS to deliver a responsive interface for real-world business needs.",
   stack: ["Next.js", "Tailwind CSS", "Prisma", "TypeScript"],
   github: "https://github.com/Ghost9841/united-travel-tour",
   live: "https://www.unitedtravels.co.uk/",
@@ -872,7 +872,7 @@ export default function Projects() {
             style={bodyFont}
             className="mt-6 text-base leading-[1.9] tracking-[0.02em] text-[#9A9692] sm:text-lg"
           >
-            A closer look at my projects. Each one links to its
+            A closer look at my projects . Each one links to its
   GitHub repository for detailed explanation and a live deployed link if availabe. The starred projects are highlighted for their significance, while the others showcase the breadth of my work.
           </motion.p>
         </motion.div>

@@ -7,6 +7,7 @@ import houseImg from "@/assets/HPP.png";
 import unitedImg from "@/assets/united.png";
 import naturalImg from "@/assets/NLP.png";
 import rnnImg from "@/assets/RNN.png";
+import CreditImg from "@/assets/Credit.png";
 
 /* ══════════════════════════════════════════════════════════════════════════
    1. DATA: the only part you need to edit
@@ -93,6 +94,19 @@ const PROJECTS: Project[] = [
 /* ── Other projects ──────────────────────────────────────────────────── */
 {
   id: "project-four",
+  starred: true,
+  title: "Credit Risk Prediction",
+  category: "Machine Learning",
+  tagline: "Predicting loan default risk using SHAP and Probability Callibration .",
+  description: "An end-to-end machine learning project focused on predicting credit risk and evaluating loan applicants' financial reliability. Explores data preprocessing, feature engineering, model training, and risk classification to estimate default probability and support data-driven lending decisions using Python.",
+  stack: [ "FastAPI", "Scikit-learn", "XGBoost" , "SHAP"],
+  github: "https://github.com/AOISYNM/Credit_Risk",
+  live: "https://credit-risk-1-8tp8.onrender.com/",
+  image:CreditImg,
+  visual: "neural",
+},
+{
+  id: "project-five",
   starred: false,
   title: "Natural Language Processing",
   category: "Data Science & NLP",
@@ -107,7 +121,7 @@ const PROJECTS: Project[] = [
 },
 
   {
-    id: "project-five",
+    id: "project-six",
     starred: false,
     title: "Recurrent Neural Networks",
     category: "Deep Learning",
@@ -120,7 +134,7 @@ const PROJECTS: Project[] = [
     visual: "neural", 
   },
   {
-    id: "project-six",
+    id: "project-seven",
     starred: false,
     title: "Student Grading System",
     category: "Analysis & Visualization",
@@ -130,6 +144,7 @@ const PROJECTS: Project[] = [
     github: "https://github.com/AOISYNM/School-Grading-System",
     visual: "chart",
   },
+  
 ];
 
 /* ══════════════════════════════════════════════════════════════════════════

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Github } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Github, Globe } from "lucide-react";
 import heartImg from "@/assets/HeartSTR.png";
 import houseImg from "@/assets/HPP.png";
 import unitedImg from "@/assets/united.png";
@@ -566,7 +566,8 @@ function ProjectLinks({
           style={bodyFont}
           className={`${base} border-[#E8E5E0]/40 bg-transparent text-[#E8E5E0] hover:border-[#E8E5E0]/70 hover:bg-[#E8E5E0]/10`}
         >
-          View Project
+          <Globe aria-hidden="true" className="h-4 w-4 shrink-0" />
+          Project Demo
           <ArrowUpRight aria-hidden="true" className={arrow} />
           <CornerBrackets />
         </motion.a>

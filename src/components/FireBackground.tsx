@@ -42,7 +42,7 @@ function flameColorAt(p: number): string {
   return BLOOD.join(",");
 }
 
-// ─── DATA STRUCTURES ───
+// ─── DATA STRUCTURES ───for the website 
 
 interface Coal {
   x: number;

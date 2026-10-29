@@ -876,7 +876,7 @@ export default function Projects() {
             className="pb-1 text-[length:clamp(2rem,9vw,5.5rem)] font-black leading-[1.08] tracking-[0.02em]"
           >
             <span className="block text-[#E8E5E0]">My</span>{" "}
-            {/* Padding + matching negative margin keeps the decorative swash
+            {/* Padding + matching negative margin keeps the decorative swashh
                 from being clipped by the gradient's paint area */}
             <span className="-mx-[0.2em] -mt-[0.1em] block bg-gradient-to-b from-[#FF3B16] to-[#D5220F] bg-clip-text px-[0.2em] pb-[0.15em] pt-[0.1em] text-transparent">
               Projects

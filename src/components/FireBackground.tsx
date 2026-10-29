@@ -510,20 +510,10 @@ export default function FireBackground() {
 
       ctx.globalCompositeOperation = "source-over";
     };
-      
-    // ── ANIMATION LOOP ──
-    const frame = (now: number) => {
-      const dt = Math.min((now - last) / 1000, 0.05);
-      last = now;
-      step(dt);
-      draw();
-      raf = requestAnimationFrame(frame);
-    };
 
     build();
     for (let i = 0; i < 100; i++) spawnSpark(true);
     for (let i = 0; i < 30; i++) spawnAsh(true);
-    // Warm up so the first frame already looks like a roaring forge
     for (let i = 0; i < 80; i++) step(1 / 60);
     draw();
     if (!reduceMotion) raf = requestAnimationFrame(frame);

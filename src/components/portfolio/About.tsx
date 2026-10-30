@@ -133,7 +133,7 @@ export default function About() {
             </ScrollReveal>
             <ScrollReveal delay={0.3}>
               <p>
-                My path into technology started with curiosity about Python,
+                My path into technology started with curiosity about Python,Technology,
                 AI, LLMs, and artificial superintelligence (ASI). My skills are{" "}
                 <strong className="font-bold text-[#E8E5E0]">
                   entirely self-taught

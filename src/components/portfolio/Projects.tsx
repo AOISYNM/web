@@ -105,8 +105,24 @@ const PROJECTS: Project[] = [
   image:CreditImg,
   visual: "neural",
 },
+
 {
   id: "project-five",
+  starred: false,
+  title: "Sentiment Analysis",
+  category: "Deep Learning & NLP",
+  tagline: "Turning raw text into insight by detecting the sentiment behind the words.",
+  description:
+    "A sentiment analysis web app that classifies text as positive, negative, or neutral using Python-based NLP techniques. Includes text preprocessing, model-driven prediction, and a deployed interface for testing your own input in real time.",
+  stack: ["GRU", "RNN", "HuggingFace", "FastApi"],
+  github: "https://github.com/AOISYNM/sentiment-analysis",
+  live: "https://sentiment-analysis-pe9b.onrender.com/",
+  image: undefined,
+  visual: "neural",
+},
+
+{
+  id: "project-six",
   starred: false,
   title: "Natural Language Processing",
   category: "Data Science & NLP",
@@ -121,7 +137,7 @@ const PROJECTS: Project[] = [
 },
 
   {
-    id: "project-six",
+    id: "project-seven",
     starred: false,
     title: "Recurrent Neural Networks",
     category: "Deep Learning",
@@ -134,7 +150,7 @@ const PROJECTS: Project[] = [
     visual: "neural", 
   },
   {
-    id: "project-seven",
+    id: "project-eight",
     starred: false,
     title: "Student Grading System",
     category: "Analysis & Visualization",

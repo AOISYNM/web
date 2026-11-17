@@ -114,7 +114,7 @@ const PROJECTS: Project[] = [
   tagline: "Turning raw text into insight by detecting the sentiment behind the words.",
   description:
     "A sentiment analysis web app that classifies text as positive, negative, or neutral using Python-based NLP techniques. Includes text preprocessing, model-driven prediction, and a deployed interface for testing your own input in real time.",
-  stack: ["GRU", "RNN", "HuggingFace", "FastApi"],
+  stack: ["GRU", "RNN", "HuggingFace", "FastApi","Scikit-learn"],
   github: "https://github.com/AOISYNM/sentiment-analysis",
   live: "https://sentiment-analysis-pe9b.onrender.com/",
   image: undefined,

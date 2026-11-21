@@ -120,9 +120,23 @@ const PROJECTS: Project[] = [
   image: undefined,
   visual: "neural",
 },
-
 {
   id: "project-six",
+  starred: false,
+  title: "Movie Recommendation System",
+  category: "Machine Learning & Recommendation Systems",
+  tagline: "Discover your next favorite movie through personalized recommendations.",
+  description:
+    "A movie recommendation system that analyzes movie similarities, genres, and user preferences to suggest films tailored to individual interests. Implements content-based filtering and similarity-based recommendation techniques to explore personalized movie discovery.",
+  stack: [  "ML","FastAPI", "NumPy", "Scikit-learn"],
+  github: "https://github.com/AOISYNM/Movie-Recommendation.git",
+  live: "https://movie-recommendation-6hhj.onrender.com",
+  image: undefined,
+  visual: "terminal",
+},
+
+{
+  id: "project-seven",
   starred: false,
   title: "Natural Language Processing",
   category: "Data Science & NLP",
@@ -137,7 +151,7 @@ const PROJECTS: Project[] = [
 },
 
   {
-    id: "project-seven",
+    id: "project-eight",
     starred: false,
     title: "Recurrent Neural Networks",
     category: "Deep Learning",
@@ -150,7 +164,7 @@ const PROJECTS: Project[] = [
     visual: "neural", 
   },
   {
-    id: "project-eight",
+    id: "project-nine",
     starred: false,
     title: "Student Grading System",
     category: "Analysis & Visualization",

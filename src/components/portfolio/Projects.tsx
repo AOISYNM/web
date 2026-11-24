@@ -9,25 +9,6 @@ import naturalImg from "@/assets/NLP.png";
 import rnnImg from "@/assets/RNN.png";
 import CreditImg from "@/assets/Credit.png";
 
-/* ══════════════════════════════════════════════════════════════════════════
-   1. DATA: the only part you need to edit
-   ──────────────────────────────────────────────────────────────────────────
-   • starred: true   → appears in the Starred Projects showcase
-   • starred: false  → appears in the Other Projects list (never in both)
-   • github          → the repository URL ("Explore Project" opens it)
-   • live            → deployed site URL. Leave it out and the
-                       "View Project" button is hidden automatically
-   • image           → optional screenshot path (e.g. "/projects/app.png",
-                       from your /public folder). Without it, a generated
-                       illustration is used, chosen by `visual`
-   • visual          → "neural" | "terminal" | "chart"
-
-   ⚠️ Every entry below is a PLACEHOLDER. Replace the text, stack, categories
-   and URLs with your real project details. `github` currently points to your
-   GitHub profile so no button is ever broken; change each one to the repo
-   URL, e.g. https://github.com/AOISYNM/<repo-name>
-   ══════════════════════════════════════════════════════════════════════════ */
-
 type Visual = "neural" | "terminal" | "chart";
 
 type Project = {
